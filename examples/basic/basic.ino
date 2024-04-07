@@ -1,5 +1,5 @@
 /*
- * TimedBlink basic example of usage
+ * EasyBlink basic example of usage
  *
  * Makes the built-in LED blink. 200ms ON and 100ms OFF.
  *
@@ -9,9 +9,9 @@
  * This example code is in the public domain.
  */
 
-#include <TimedBlink.h>
+#include <EasyBlink.h>
 
-TimedBlink monitor(LED_BUILTIN); // Use built-in LED
+EasyBlink monitor(LED_BUILTIN); // Use built-in LED
 
 void setup()
 {

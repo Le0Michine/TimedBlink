@@ -1,10 +1,10 @@
 #include <Arduino.h>
-#include "TimedBlink.h"
+#include "EasyBlink.h"
 
 /*
  * Resets all timers and state
  */
-void TimedBlink::reset()
+void EasyBlink::reset()
 {
   m_blinkTime = 0UL;
   m_onForTime = -1;
@@ -18,7 +18,7 @@ void TimedBlink::reset()
 /*
  * Constructor. Only needs to know what pin to blink.
  */
-TimedBlink::TimedBlink(int pin)
+EasyBlink::EasyBlink(int pin)
 {
   m_pin = pin;
   reset();
@@ -27,7 +27,7 @@ TimedBlink::TimedBlink(int pin)
 /*
  * Returns blinking state
  */
-bool TimedBlink::isBlinking()
+bool EasyBlink::isBlinking()
 {
   return m_isBlinking;
 }
@@ -35,7 +35,7 @@ bool TimedBlink::isBlinking()
 /*
  * Sets amount of blink cycles
  */
-void TimedBlink::setBlinkCount(int count)
+void EasyBlink::setBlinkCount(int count)
 {
   m_blinkCount = count;
 }
@@ -43,7 +43,7 @@ void TimedBlink::setBlinkCount(int count)
 /*
  * Sets the blink time ON
  */
-void TimedBlink::setOnTime(int ms)
+void EasyBlink::setOnTime(int ms)
 {
   if (ms > 0)
   { // no=op if ms is <= 0
@@ -58,7 +58,7 @@ void TimedBlink::setOnTime(int ms)
 /*
  * Sets the blink time OFF
  */
-void TimedBlink::setOffTime(int ms)
+void EasyBlink::setOffTime(int ms)
 {
   if (ms > 0)
   { // no=op if ms is <= 0
@@ -73,7 +73,7 @@ void TimedBlink::setOffTime(int ms)
 /*
  * Sets the blink state ON or OFF
  */
-void TimedBlink::setBlinkState(blink_t state)
+void EasyBlink::setBlinkState(blink_t state)
 {
   digitalWrite(m_pin, (state == BLINK_ON) ? HIGH : LOW);
   m_blinkState = state;
@@ -85,7 +85,7 @@ void TimedBlink::setBlinkState(blink_t state)
  * values if you don't want to change what is already set.
  */
 
-void TimedBlink::blink(int on_for, int off_for)
+void EasyBlink::blink(int on_for, int off_for)
 {
   m_isBlinking = true;
   setOnTime(on_for);
@@ -95,7 +95,7 @@ void TimedBlink::blink(int on_for, int off_for)
 /*
  * Call often to blink.
  */
-void TimedBlink::loop()
+void EasyBlink::loop()
 {
   if (m_blinkCount == 0 || !m_isBlinking)
   {
@@ -134,7 +134,7 @@ void TimedBlink::loop()
 /*
  * Equivalent to delay(d), but updates the blink.
  */
-void TimedBlink::blinkSync(int delayMs)
+void EasyBlink::blinkSync(int delayMs)
 {
   unsigned long start = millis();
   while (millis() - start < delayMs)
@@ -148,7 +148,7 @@ void TimedBlink::blinkSync(int delayMs)
 /*
  * Blink sync until count runs out
  */
-void TimedBlink::blinkSync()
+void EasyBlink::blinkSync()
 {
   if (m_blinkCount <= 0)
   {
@@ -164,7 +164,7 @@ void TimedBlink::blinkSync()
 /*
  * Turns off the blink.
  */
-void TimedBlink::blinkOff()
+void EasyBlink::blinkOff()
 {
   reset();
   digitalWrite(m_pin, LOW);

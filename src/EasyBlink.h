@@ -1,11 +1,11 @@
-#ifndef __TimedBlink__H__
-#define __TimedBlink__H__
+#ifndef __EasyBlink__H__
+#define __EasyBlink__H__
 
 #include <Arduino.h>
 
 enum blink_t {BLINK_ON, BLINK_OFF};
 
-class TimedBlink {
+class EasyBlink {
   private:
     unsigned long m_blinkTime;
     int m_onForTime;
@@ -20,7 +20,7 @@ class TimedBlink {
 
   public:
 
-    TimedBlink(int pin);
+    EasyBlink(int pin);
     void blink(int on_for, int off_for);
     void loop();
     void setBlinkCount(int count);
@@ -33,4 +33,4 @@ class TimedBlink {
     bool isBlinking();
 };
 
-#endif // __TimedBlink__H__
+#endif // __EasyBlink__H__
