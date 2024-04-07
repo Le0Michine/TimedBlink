@@ -1,4 +1,3 @@
-
 #ifndef __TimedBlink__H__
 #define __TimedBlink__H__
 
@@ -14,6 +13,8 @@ class TimedBlink {
     blink_t m_blinkState;
     short m_pin;
     int m_resolution;
+    int m_blinkCount;
+    bool m_isBlinking;
 
     void reset();
 
@@ -21,12 +22,15 @@ class TimedBlink {
 
     TimedBlink(int pin);
     void blink(int on_for, int off_for);
-    void blink();
+    void loop();
+    void setBlinkCount(int count);
     void setOnTime(int ms);
     void setOffTime(int ms);
     void setBlinkState(blink_t state);
-    void blinkDelay(int d);
+    void blinkSync(int delayMs);
+    void blinkSync();
     void blinkOff();
+    bool isBlinking();
 };
 
 #endif // __TimedBlink__H__
