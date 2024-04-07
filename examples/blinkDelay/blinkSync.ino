@@ -8,19 +8,23 @@
  *
  * This example code is in the public domain.
  */
- 
+
 #include <TimedBlink.h>
 
 TimedBlink monitor(LED_BUILTIN);
 
-void setup() {
-   Serial.begin(9600);
-   pinMode(LED_BUILTIN, OUTPUT);
-   monitor.blink(100,300);
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+  monitor.blink(100, 300);
+  monitor.setBlinkCount(5);
+  Serial.println("Blink 5 times when setup is doen");
+  monitor.blinkSync();
 }
 
-void loop() {
+void loop()
+{
   Serial.println("Waiting 3 seconds and blinking the LED at the same time...");
-  monitor.blinkDelay(3000);
+  monitor.blinkSync(3000);
 }
-

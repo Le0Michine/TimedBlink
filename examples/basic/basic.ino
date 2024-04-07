@@ -13,12 +13,14 @@
 
 TimedBlink monitor(LED_BUILTIN); // Use built-in LED
 
-void setup() {
-   Serial.begin(9600);
-   pinMode(LED_BUILTIN, OUTPUT);
-   monitor.blink(150,50);  // On for 150ms, off for 50ms
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+  monitor.blink(150, 50); // On for 150ms, off for 50ms
 }
 
-void loop() {
-  monitor.blink();
+void loop()
+{
+  monitor.loop();
 }
